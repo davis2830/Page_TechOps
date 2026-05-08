@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -36,6 +37,7 @@ export default function Footer() {
               <li><a href="#productos" className="hover:text-amber-400 transition-colors">Torque — ERP Taller</a></li>
               <li><a href="#precios" className="hover:text-amber-400 transition-colors">Planes y Precios</a></li>
               <li><a href="#contacto" className="hover:text-amber-400 transition-colors">Solicitar Demo</a></li>
+              <li><Link to="/taller" className="hover:text-amber-400 transition-colors">Taller Mecánico</Link></li>
             </ul>
           </div>
 
