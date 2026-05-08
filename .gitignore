@@ -1,0 +1,32 @@
+# Dependencias
+node_modules/
+package-lock.json
+
+# Ambiente virtual Python
+.venv/
+venv/
+env/
+*.py[cod]
+__pycache__/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+dist/
+.env
+.env.local
+
+# Carpetas de respaldo
+old/
+Perfil_Bot/
+
+# Archivos de prueba
+prueba_api.js

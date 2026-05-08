@@ -1,0 +1,26 @@
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Stats from './components/Stats';
+import Services from './components/Services';
+import ProductShowcase from './components/ProductShowcase';
+import Pricing from './components/Pricing';
+import WhyUs from './components/WhyUs';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+
+export default function LandingPage() {
+  return (
+    <div className="min-h-screen bg-[#020617] text-slate-100 overflow-x-hidden">
+      <Navbar />
+      <Hero />
+      <Stats />
+      <Services />
+      <ProductShowcase />
+      <Pricing />
+      <WhyUs />
+      <Contact />
+      <Footer />
+    </div>
+  );
+}
