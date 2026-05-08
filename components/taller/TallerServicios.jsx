@@ -6,45 +6,45 @@ const servicios = [
   {
     icon: Wrench,
     color: 'from-amber-500 to-amber-700',
-    title: 'Mecnica General',
-    desc: 'Reparacin y mantenimiento completo de motores, transmisiones y sistemas mecnicos.',
+    title: 'Mecánica General',
+    desc: 'Reparación y mantenimiento completo de motores, transmisiones y sistemas mecánicos.',
     items: [
-      'Reparacin de motor y culata',
-      'Cambio de clutch y transmisin',
-      'Ajuste y calibracin de motor',
+      'Reparación de motor y culata',
+      'Cambio de clutch y transmisión',
+      'Ajuste y calibración de motor',
     ],
   },
   {
     icon: Gauge,
     color: 'from-orange-500 to-orange-700',
-    title: 'Frenos y Suspensin',
-    desc: 'Tu seguridad es prioridad. Revisamos y reparamos todo el sistema de frenado y suspensin.',
+    title: 'Frenos y Suspensión',
+    desc: 'Tu seguridad es prioridad. Revisamos y reparamos todo el sistema de frenado y suspensión.',
     items: [
       'Cambio de pastillas y discos de freno',
-      'Reparacin de amortiguadores',
-      'Alineacin y balanceo',
+      'Reparación de amortiguadores',
+      'Alineación y balanceo',
     ],
   },
   {
     icon: Zap,
     color: 'from-yellow-500 to-yellow-700',
-    title: 'Sistema Elctrico y Diagntico',
-    desc: 'Diagntico computarizado y reparacin de sistemas elctricos y electrnicos.',
+    title: 'Sistema Eléctrico y Diagnóstico',
+    desc: 'Diagnóstico computarizado y reparación de sistemas eléctricos y electrónicos.',
     items: [
       'Escaneo computarizado OBD-II',
-      'Reparacin de alternador y motor de arranque',
-      'Diagnstico de sensores y ECU',
+      'Reparación de alternador y motor de arranque',
+      'Diagnóstico de sensores y ECU',
     ],
   },
   {
     icon: Droplets,
     color: 'from-red-500 to-red-700',
     title: 'Cambio de Aceite y Fluidos',
-    desc: 'Mantenimiento preventivo para prolongar la vida de tu vehculo.',
+    desc: 'Mantenimiento preventivo para prolongar la vida de tu vehículo.',
     items: [
       'Cambio de aceite y filtros',
-      'Lquido de frenos y direccin hidrulica',
-      'Refrigerante y lquido de transmisin',
+      'Líquido de frenos y dirección hidráulica',
+      'Refrigerante y líquido de transmisión',
     ],
   },
   {
@@ -54,7 +54,7 @@ const servicios = [
     desc: 'Programa de mantenimiento para evitar reparaciones costosas.',
     items: [
       'Servicio menor y mayor',
-      'Inspeccin de 21 puntos',
+      'Inspección de 21 puntos',
       'Cambio de bandas y mangueras',
     ],
   },
@@ -62,11 +62,11 @@ const servicios = [
     icon: Settings,
     color: 'from-blue-500 to-blue-700',
     title: 'Servicios Especializados',
-    desc: 'Trabajos tcnicos avanzados con equipo profesional.',
+    desc: 'Trabajos técnicos avanzados con equipo profesional.',
     items: [
-      'Reparacin de aire acondicionado automotriz',
-      'Rectificacin de discos y tambores',
-      'Cambio de kit de distribucin',
+      'Reparación de aire acondicionado automotriz',
+      'Rectificación de discos y tambores',
+      'Cambio de kit de distribución',
     ],
   },
 ];
@@ -96,7 +96,7 @@ function SectionHeader() {
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-amber mb-4">
         Servicios del Taller
       </h2>
-      <p className="text-slate-400 text-lg">Soluciones completas para tu vehculo con tcnicos certificados</p>
+      <p className="text-slate-400 text-lg">Soluciones completas para tu vehículo con técnicos certificados</p>
     </div>
   );
 }

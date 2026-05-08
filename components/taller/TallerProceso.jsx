@@ -7,25 +7,25 @@ const pasos = [
     icon: Phone,
     step: '01',
     title: 'Contacto',
-    desc: 'Comunicate con nosotros por telfono, WhatsApp o llena el formulario. Te atenderemos de inmediato.',
+    desc: 'Comunícate con nosotros por teléfono, WhatsApp o llena el formulario. Te atenderemos de inmediato.',
   },
   {
     icon: ClipboardList,
     step: '02',
-    title: 'Diagntico',
-    desc: 'Realizamos una inspeccin completa con equipo computarizado para identificar la falla con precisin.',
+    title: 'Diagnóstico',
+    desc: 'Realizamos una inspección completa con equipo computarizado para identificar la falla con precisión.',
   },
   {
     icon: Wrench,
     step: '03',
-    title: 'Reparacin',
+    title: 'Reparación',
     desc: 'Ejecutamos el trabajo con piezas de calidad. Te mantenemos informado del avance en todo momento.',
   },
   {
     icon: CheckCircle,
     step: '04',
     title: 'Entrega',
-    desc: 'Pruebas de calidad finales y entrega puntual. Tu vehculo sale listo y con garanta de servicio.',
+    desc: 'Pruebas de calidad finales y entrega puntual. Tu vehículo sale listo y con garantía de servicio.',
   },
 ];
 
@@ -49,12 +49,12 @@ function Header() {
   return (
     <div ref={ref} className={`text-center max-w-2xl mx-auto transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-amber-400 mb-4">
-        <span className="w-8 h-px bg-amber-500" /> CMO TRABAJAMOS
+        <span className="w-8 h-px bg-amber-500" /> CÓMO TRABAJAMOS
       </span>
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-amber mb-4">
         Nuestro Proceso
       </h2>
-      <p className="text-slate-400 text-lg">Cuatro pasos simples para dejar tu vehculo en ptimas condiciones</p>
+      <p className="text-slate-400 text-lg">Cuatro pasos simples para dejar tu vehículo en óptimas condiciones</p>
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default function TallerNavbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-2xl font-bold gradient-text-amber leading-tight">GC Torque</span>
-              <span className="text-[10px] text-slate-500 tracking-widest">TALLER MECNICO</span>
+              <span className="text-[10px] text-slate-500 tracking-widest">TALLER MECÁNICO</span>
             </div>
           </a>
 

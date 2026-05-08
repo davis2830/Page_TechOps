@@ -16,7 +16,7 @@ export default function TallerFooter() {
               <span className="text-xl font-bold gradient-text-amber">GC Torque</span>
             </div>
             <p className="text-sm text-slate-500 leading-relaxed">
-              Taller mecnico profesional. Tu vehculo en las mejores manos.
+              Taller mecánico profesional. Tu vehículo en las mejores manos.
             </p>
           </div>
 
@@ -24,9 +24,9 @@ export default function TallerFooter() {
           <div>
             <h4 className="text-sm font-semibold text-white mb-4">Servicios</h4>
             <ul className="space-y-2.5 text-sm text-slate-500">
-              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Mecnica General</a></li>
-              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Frenos y Suspensin</a></li>
-              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Diagntico Electrnico</a></li>
+              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Mecánica General</a></li>
+              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Frenos y Suspensión</a></li>
+              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Diagnóstico Electrónico</a></li>
               <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Servicio Preventivo</a></li>
             </ul>
           </div>

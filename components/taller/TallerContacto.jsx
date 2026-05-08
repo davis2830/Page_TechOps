@@ -14,9 +14,9 @@ export default function TallerContacto() {
     const subject = encodeURIComponent(`Solicitud de Servicio - ${formData.servicio || 'General'}`);
     const body = encodeURIComponent(
       `Nombre: ${formData.nombre}\n` +
-      `Telfono: ${formData.telefono}\n` +
+      `Teléfono: ${formData.telefono}\n` +
       `Email: ${formData.email}\n` +
-      `Vehculo: ${formData.vehiculo}\n` +
+      `Vehículo: ${formData.vehiculo}\n` +
       `Servicio: ${formData.servicio}\n` +
       `Mensaje: ${formData.mensaje}`
     );
@@ -29,7 +29,7 @@ export default function TallerContacto() {
   const contactInfo = [
     {
       icon: Phone,
-      label: 'Telfono',
+      label: 'Teléfono',
       value: '5464-9404',
       href: 'tel:+50254649404',
       color: 'from-amber-500 to-orange-600',
@@ -51,7 +51,7 @@ export default function TallerContacto() {
     },
     {
       icon: MapPin,
-      label: 'Ubicacin',
+      label: 'Ubicación',
       value: 'Guatemala',
       href: null,
       color: 'from-red-500 to-red-700',
@@ -71,7 +71,7 @@ export default function TallerContacto() {
               Agenda tu Cita
             </h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Contctanos por el medio que prefieras. Estamos listos para atender tu vehculo.
+              Contáctanos por el medio que prefieras. Estamos listos para atender tu vehículo.
             </p>
           </div>
 
@@ -115,7 +115,7 @@ export default function TallerContacto() {
                 className="flex items-center justify-center gap-3 w-full py-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white font-semibold rounded-xl transition-all shadow-lg shadow-green-900/20 hover:-translate-y-0.5"
               >
                 <MessageCircle className="w-5 h-5" />
-                Escrbenos por WhatsApp
+                Escríbenos por WhatsApp
               </a>
             </div>
 
@@ -123,11 +123,11 @@ export default function TallerContacto() {
             <form onSubmit={handleSubmit} className="lg:col-span-3 glass-card rounded-2xl p-8 space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <FormInput label="Nombre" value={formData.nombre} onChange={(v) => setFormData({ ...formData, nombre: v })} placeholder="Tu nombre" required />
-                <FormInput label="Telfono" type="tel" value={formData.telefono} onChange={(v) => setFormData({ ...formData, telefono: v })} placeholder="+502 5464-9404" required />
+                <FormInput label="Teléfono" type="tel" value={formData.telefono} onChange={(v) => setFormData({ ...formData, telefono: v })} placeholder="+502 5464-9404" required />
               </div>
               <div className="grid sm:grid-cols-2 gap-5">
                 <FormInput label="Email" type="email" value={formData.email} onChange={(v) => setFormData({ ...formData, email: v })} placeholder="tu@email.com" />
-                <FormInput label="Vehculo" value={formData.vehiculo} onChange={(v) => setFormData({ ...formData, vehiculo: v })} placeholder="Ej: Toyota Corolla 2020" />
+                <FormInput label="Vehículo" value={formData.vehiculo} onChange={(v) => setFormData({ ...formData, vehiculo: v })} placeholder="Ej: Toyota Corolla 2020" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">Servicio que necesitas</label>
@@ -138,9 +138,9 @@ export default function TallerContacto() {
                   className="w-full px-4 py-3 bg-slate-800/60 border border-slate-700/60 rounded-xl text-white focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all text-sm"
                 >
                   <option value="">Selecciona un servicio</option>
-                  <option value="mecanica-general">Mecnica General</option>
-                  <option value="frenos-suspension">Frenos y Suspensin</option>
-                  <option value="diagnostico">Diagntico Electrnico</option>
+                  <option value="mecanica-general">Mecánica General</option>
+                  <option value="frenos-suspension">Frenos y Suspensión</option>
+                  <option value="diagnostico">Diagnóstico Electrónico</option>
                   <option value="cambio-aceite">Cambio de Aceite y Fluidos</option>
                   <option value="servicio-preventivo">Servicio Preventivo</option>
                   <option value="aire-acondicionado">Aire Acondicionado</option>

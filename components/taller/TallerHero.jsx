@@ -15,11 +15,11 @@ export default function TallerHero() {
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-amber-500/20 text-amber-400 text-xs font-semibold tracking-wider animate-fade-in">
               <Wrench className="w-3.5 h-3.5" />
-              TALLER MECNICO PROFESIONAL
+              TALLER MECÁNICO PROFESIONAL
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight">
-              <span className="gradient-text-amber">Tu vehculo</span>
+              <span className="gradient-text-amber">Tu vehículo</span>
               <br />
               <span className="text-white">en las mejores</span>
               <br />
@@ -27,13 +27,13 @@ export default function TallerHero() {
             </h1>
 
             <p className="text-lg text-slate-400 leading-relaxed max-w-lg">
-              Servicio mecnico integral con tecnologa de punta. Diagnosticamos, reparamos y mantenemos tu vehculo para que funcione como nuevo.
+              Servicio mecánico integral con tecnología de punta. Diagnosticamos, reparamos y mantenemos tu vehículo para que funcione como nuevo.
             </p>
 
             <div className="flex flex-wrap gap-6 text-sm text-slate-400">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-amber-400" />
-                <span>Garanta en servicio</span>
+                <span>Garantía en servicio</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-400" />
@@ -77,9 +77,9 @@ export default function TallerHero() {
                   </div>
                   <div className="space-y-2.5 text-slate-400">
                     {[
-                      { label: 'Mecnica General', status: 'Disponible', color: 'text-green-400' },
-                      { label: 'Frenos y Suspensin', status: 'Disponible', color: 'text-green-400' },
-                      { label: 'Diagntico Electrnico', status: 'Disponible', color: 'text-green-400' },
+                      { label: 'Mecánica General', status: 'Disponible', color: 'text-green-400' },
+                      { label: 'Frenos y Suspensión', status: 'Disponible', color: 'text-green-400' },
+                      { label: 'Diagnóstico Electrónico', status: 'Disponible', color: 'text-green-400' },
                       { label: 'Servicio Express', status: 'Activo', color: 'text-amber-400' },
                       { label: 'Cambio de Aceite', status: 'Disponible', color: 'text-green-400' },
                     ].map((item) => (
@@ -90,7 +90,7 @@ export default function TallerHero() {
                     ))}
                   </div>
                   <div className="pt-3 mt-2 border-t border-slate-800/60 flex items-center justify-between">
-                    <span className="text-slate-600">Satisfaccin</span>
+                    <span className="text-slate-600">Satisfacción</span>
                     <span className="text-2xl font-bold text-amber-400">98.5%</span>
                   </div>
                 </div>

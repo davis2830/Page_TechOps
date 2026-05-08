@@ -18,10 +18,10 @@ export default function TallerNosotros() {
   const [ref, visible] = useReveal(0.1);
 
   const highlights = [
-    { icon: Award, label: 'Tcnicos Certificados', desc: 'Personal capacitado y con experiencia comprobada' },
-    { icon: Users, label: 'Atencin Personalizada', desc: 'Cada cliente recibe seguimiento detallado de su vehculo' },
+    { icon: Award, label: 'Técnicos Certificados', desc: 'Personal capacitado y con experiencia comprobada' },
+    { icon: Users, label: 'Atención Personalizada', desc: 'Cada cliente recibe seguimiento detallado de su vehículo' },
     { icon: Clock, label: 'Tiempos de Entrega', desc: 'Cumplimos con los plazos acordados sin excusas' },
-    { icon: ThumbsUp, label: 'Garanta de Servicio', desc: 'Respaldamos cada trabajo realizado en nuestro taller' },
+    { icon: ThumbsUp, label: 'Garantía de Servicio', desc: 'Respaldamos cada trabajo realizado en nuestro taller' },
   ];
 
   return (
@@ -45,13 +45,13 @@ export default function TallerNosotros() {
 
             <div className="space-y-4 text-lg text-slate-300 leading-relaxed max-w-2xl mb-10">
               <p>
-                Somos un taller mecnico comprometido con la{' '}
+                Somos un taller mecánico comprometido con la{' '}
                 <span className="text-amber-400 font-semibold">excelencia y la transparencia</span>.
-                Cada vehculo que entra a nuestro taller recibe un diagnstico honesto y un servicio de primera.
+                Cada vehículo que entra a nuestro taller recibe un diagnóstico honesto y un servicio de primera.
               </p>
               <p>
                 Utilizamos{' '}
-                <span className="text-orange-400 font-semibold">herramientas profesionales y tecnologa de diagntico avanzada</span>{' '}
+                <span className="text-orange-400 font-semibold">herramientas profesionales y tecnología de diagnóstico avanzada</span>{' '}
                 para garantizar reparaciones precisas y duraderas.
               </p>
             </div>
@@ -71,9 +71,9 @@ export default function TallerNosotros() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <StatItem value={500} suffix="+" label="Vehculos Atendidos" visible={visible} />
-              <StatItem value={98} suffix="%" label="Satisfaccin" visible={visible} />
-              <StatItem value={10} suffix="+" label="Aos de Experiencia" visible={visible} />
+              <StatItem value={500} suffix="+" label="Vehículos Atendidos" visible={visible} />
+              <StatItem value={98} suffix="%" label="Satisfacción" visible={visible} />
+              <StatItem value={10} suffix="+" label="Años de Experiencia" visible={visible} />
               <StatItem value={24} suffix="h" label="Soporte" visible={visible} />
             </div>
           </div>
