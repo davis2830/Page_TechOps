@@ -5,6 +5,7 @@ export default {
     "./main.jsx",
     "./web_Davis.jsx",
     "./components/**/*.{jsx,tsx}",
+    "./pages/**/*.{jsx,tsx}",
   ],
   theme: {
     extend: {

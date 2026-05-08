@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Code } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -18,6 +19,8 @@ export default function Navbar() {
     { href: '#contacto', label: 'Contacto' },
   ];
 
+  const tallerLink = { to: '/taller', label: 'Taller Mecánico' };
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'glass shadow-2xl shadow-black/20' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,6 +38,9 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
+            <Link to={tallerLink.to} className="text-sm text-amber-400/80 hover:text-amber-400 transition-colors font-medium tracking-wide">
+              {tallerLink.label}
+            </Link>
             <a href="#contacto" className="btn-primary text-sm !px-5 !py-2.5">
               Agendar Consultoría
             </a>
@@ -54,6 +60,9 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
+            <Link to={tallerLink.to} onClick={() => setOpen(false)} className="block py-2 text-amber-400/80 hover:text-amber-400 transition-colors font-medium">
+              {tallerLink.label}
+            </Link>
             <a href="#contacto" onClick={() => setOpen(false)} className="btn-primary w-full justify-center text-sm mt-3">
               Agendar Consultoría
             </a>
