@@ -1,30 +1,46 @@
 import React, { useState } from 'react';
-import { Send, Phone, Mail, MapPin, MessageCircle, ChevronRight } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, MessageCircle, ChevronRight, Loader2 } from 'lucide-react';
 import { useReveal } from '../useReveal';
 import config from '../../config/contacto';
 
 export default function TallerContacto() {
   const [ref, visible] = useReveal(0.1);
   const [formData, setFormData] = useState({ nombre: '', telefono: '', email: '', vehiculo: '', servicio: '', mensaje: '' });
-  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState('idle');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSending(true);
+    setStatus('sending');
 
-    const subject = encodeURIComponent(`Solicitud de Información - Sistema ERP ${formData.servicio || 'General'}`);
-    const body = encodeURIComponent(
-      `Nombre: ${formData.nombre}\n` +
-      `Teléfono: ${formData.telefono}\n` +
-      `Email: ${formData.email}\n` +
-      `Taller / Negocio: ${formData.vehiculo}\n` +
-      `Módulo de interés: ${formData.servicio}\n` +
-      `Mensaje: ${formData.mensaje}`
-    );
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: config.web3formsKey,
+          subject: `Solicitud de Información - Sistema ERP ${formData.servicio || 'General'}`,
+          from_name: formData.nombre,
+          nombre: formData.nombre,
+          telefono: formData.telefono,
+          email: formData.email,
+          taller_negocio: formData.vehiculo,
+          modulo_interes: formData.servicio,
+          mensaje: formData.mensaje,
+        }),
+      });
 
-    window.location.href = `mailto:${config.email}?subject=${subject}&body=${body}`;
-
-    setTimeout(() => setSending(false), 2000);
+      if (res.ok) {
+        setStatus('sent');
+        setFormData({ nombre: '', telefono: '', email: '', vehiculo: '', servicio: '', mensaje: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   const contactInfo = [
@@ -159,9 +175,20 @@ export default function TallerContacto() {
                 />
               </div>
 
-              <button type="submit" disabled={sending} className="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-amber-900/20 hover:-translate-y-0.5 group disabled:opacity-70">
-                <Send className="w-4 h-4" />
-                {sending ? 'Abriendo correo...' : 'Solicitar Información'}
+              {status === 'sent' && (
+                <div className="flex items-center gap-2 text-green-400 text-sm bg-green-500/10 border border-green-500/20 rounded-xl px-4 py-3">
+                  ¡Mensaje enviado! Te contactaremos pronto.
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="flex items-center gap-2 text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
+                  Error al enviar. Intenta de nuevo o escríbenos a {config.email}
+                </div>
+              )}
+
+              <button type="submit" disabled={status === 'sending'} className="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-amber-900/20 hover:-translate-y-0.5 group disabled:opacity-70">
+                {status === 'sending' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                {status === 'sending' ? 'Enviando...' : 'Solicitar Información'}
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>

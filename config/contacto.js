@@ -7,6 +7,7 @@ const config = {
   location: import.meta.env.VITE_BUSINESS_LOCATION || 'Guatemala',
   domain: import.meta.env.VITE_BUSINESS_DOMAIN || 'gctorque.com',
   siteUrl: import.meta.env.VITE_SITE_URL || 'https://www.gctorque.com',
+  web3formsKey: import.meta.env.VITE_WEB3FORMS_KEY || '',
 };
 
 config.phoneFull = `+${config.countryCode}${config.phone}`;

@@ -1,27 +1,46 @@
 import React, { useState } from 'react';
-import { ChevronRight, Send } from 'lucide-react';
+import { ChevronRight, Send, Loader2 } from 'lucide-react';
 import { useReveal } from './useReveal';
 import config from '../config/contacto';
 
 export default function Contact() {
   const [ref, visible] = useReveal(0.1);
   const [formData, setFormData] = useState({ nombre: '', empresa: '', email: '', telefono: '', servicio: '', mensaje: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Consultoría TechOps - ${formData.servicio || 'General'}`);
-    const body = encodeURIComponent(
-      `Nombre: ${formData.nombre}\n` +
-      `Empresa: ${formData.empresa}\n` +
-      `Email: ${formData.email}\n` +
-      `Teléfono: ${formData.telefono}\n` +
-      `Servicio: ${formData.servicio}\n` +
-      `Mensaje: ${formData.mensaje}`
-    );
-    window.location.href = `mailto:${config.email}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    setStatus('sending');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: config.web3formsKey,
+          subject: `Consultoría TechOps - ${formData.servicio || 'General'}`,
+          from_name: formData.nombre,
+          nombre: formData.nombre,
+          empresa: formData.empresa,
+          email: formData.email,
+          telefono: formData.telefono,
+          servicio: formData.servicio,
+          mensaje: formData.mensaje,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus('sent');
+        setFormData({ nombre: '', empresa: '', email: '', telefono: '', servicio: '', mensaje: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -78,15 +97,20 @@ export default function Contact() {
               />
             </div>
 
-            {sent && (
+            {status === 'sent' && (
               <div className="flex items-center gap-2 text-green-400 text-sm bg-green-500/10 border border-green-500/20 rounded-xl px-4 py-3">
-                ✓ ¡Mensaje enviado! Te contactaremos pronto.
+                ¡Mensaje enviado! Te contactaremos pronto.
+              </div>
+            )}
+            {status === 'error' && (
+              <div className="flex items-center gap-2 text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
+                Error al enviar. Intenta de nuevo o escríbenos a {config.email}
               </div>
             )}
 
-            <button type="submit" className="w-full btn-primary justify-center group">
-              <Send className="w-4 h-4" />
-              Enviar Solicitud
+            <button type="submit" disabled={status === 'sending'} className="w-full btn-primary justify-center group disabled:opacity-70">
+              {status === 'sending' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+              {status === 'sending' ? 'Enviando...' : 'Enviar Solicitud'}
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
