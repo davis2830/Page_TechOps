@@ -10,6 +10,12 @@ import TallerFooter from '../components/taller/TallerFooter';
 export default function TallerPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = 'GC Torque | Sistema ERP para Talleres Mecánicos';
+    document.querySelector('meta[name="description"]')?.setAttribute('content',
+      'Sistema ERP profesional para talleres mecánicos. Gestiona órdenes de trabajo, inventario, facturación y clientes. Disponible en Guatemala y Latinoamérica.'
+    );
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', 'https://www.gctorque.com/taller');
   }, []);
 
   return (

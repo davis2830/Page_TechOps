@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import config from '../../config/contacto';
 
 export default function TallerNavbar() {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,7 @@ export default function TallerNavbar() {
               <Wrench className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold gradient-text-amber leading-tight">GC Torque</span>
+              <span className="text-2xl font-bold gradient-text-amber leading-tight">{config.businessName}</span>
               <span className="text-[10px] text-slate-500 tracking-widest">TALLER MECÁNICO</span>
             </div>
           </a>
@@ -43,7 +44,7 @@ export default function TallerNavbar() {
               TechOps
             </Link>
             <a href="#contacto-taller" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-semibold rounded-xl transition-all text-sm shadow-lg shadow-amber-900/20 hover:-translate-y-0.5">
-              Cotizar Ahora
+              Solicitar Demo
             </a>
           </div>
 
@@ -65,7 +66,7 @@ export default function TallerNavbar() {
               TechOps
             </Link>
             <a href="#contacto-taller" onClick={() => setOpen(false)} className="inline-flex items-center justify-center gap-2 w-full px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-xl text-sm mt-3">
-              Cotizar Ahora
+              Solicitar Demo
             </a>
           </div>
         </div>

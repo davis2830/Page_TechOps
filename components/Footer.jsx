@@ -1,6 +1,7 @@
 import React from 'react';
-import { Code } from 'lucide-react';
+import { Code, Phone, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import config from '../config/contacto';
 
 export default function Footer() {
   return (
@@ -45,9 +46,24 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-white mb-4">Contacto</h4>
             <ul className="space-y-2.5 text-sm text-slate-500">
-              <li>contacto@techops.com</li>
-              <li>+502 1234-5678</li>
-              <li>Guatemala, GT</li>
+              <li>
+                <a href={`mailto:${config.email}`} className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                  <Mail className="w-4 h-4" />
+                  {config.email}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${config.phoneFull}`} className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                  <Phone className="w-4 h-4" />
+                  {config.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <span className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  {config.location}
+                </span>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Phone, Wrench, Shield, Clock } from 'lucide-react';
+import { ArrowRight, Phone, Wrench, Shield, Clock, Monitor } from 'lucide-react';
+import config from '../../config/contacto';
 
 export default function TallerHero() {
   return (
@@ -27,27 +28,31 @@ export default function TallerHero() {
             </h1>
 
             <p className="text-lg text-slate-400 leading-relaxed max-w-lg">
-              Servicio mecánico integral con tecnología de punta. Diagnosticamos, reparamos y mantenemos tu vehículo para que funcione como nuevo.
+              Sistema ERP profesional para talleres mecánicos. Gestiona órdenes de trabajo, inventario, clientes y facturación desde una sola plataforma.
             </p>
 
             <div className="flex flex-wrap gap-6 text-sm text-slate-400">
               <div className="flex items-center gap-2">
+                <Monitor className="w-4 h-4 text-amber-400" />
+                <span>Multi-tenancy</span>
+              </div>
+              <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-amber-400" />
-                <span>Garantía en servicio</span>
+                <span>Seguridad empresarial</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-400" />
-                <span>Entrega puntual</span>
+                <span>Soporte 24/7</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="#contacto-taller" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-amber-900/30 hover:-translate-y-0.5 group">
-                Agendar Cita
+                Solicitar Demo
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="https://wa.me/50254649404?text=Hola%2C%20me%20interesa%20agendar%20una%20cita%20en%20el%20taller"
+                href={`${config.whatsappUrl}?text=${encodeURIComponent('Hola, me interesa conocer más sobre el sistema ERP para talleres de GC Torque')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-green-500/40 hover:border-green-400/60 text-green-400 hover:text-green-300 font-semibold rounded-xl transition-all hover:bg-green-500/5"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Award, Users, Clock, ThumbsUp } from 'lucide-react';
 import { useReveal, useCounter } from '../useReveal';
+import config from '../../config/contacto';
 
 function StatItem({ value, suffix, label, visible }) {
   const count = useCounter(value, 1800, 0, visible);
@@ -45,14 +46,14 @@ export default function TallerNosotros() {
 
             <div className="space-y-4 text-lg text-slate-300 leading-relaxed max-w-2xl mb-10">
               <p>
-                Somos un taller mecánico comprometido con la{' '}
-                <span className="text-amber-400 font-semibold">excelencia y la transparencia</span>.
-                Cada vehículo que entra a nuestro taller recibe un diagnóstico honesto y un servicio de primera.
+                  En {config.businessName} desarrollamos un{' '}
+                  <span className="text-amber-400 font-semibold">sistema ERP especializado para talleres mecánicos</span>.
+                  Cada taller que implementa nuestra plataforma optimiza sus operaciones y mejora su rentabilidad.
               </p>
               <p>
-                Utilizamos{' '}
-                <span className="text-orange-400 font-semibold">herramientas profesionales y tecnología de diagnóstico avanzada</span>{' '}
-                para garantizar reparaciones precisas y duraderas.
+                  Utilizamos{' '}
+                  <span className="text-orange-400 font-semibold">tecnología moderna y arquitectura multi-tenancy</span>{' '}
+                  para garantizar una plataforma segura, escalable y personalizable.
               </p>
             </div>
 

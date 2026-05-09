@@ -1,72 +1,72 @@
 import React from 'react';
-import { Wrench, Gauge, Zap, Droplets, Shield, Settings, Check } from 'lucide-react';
+import { Wrench, ClipboardList, Zap, BarChart3, Shield, Settings, Check } from 'lucide-react';
 import { useReveal } from '../useReveal';
 
 const servicios = [
   {
-    icon: Wrench,
+    icon: ClipboardList,
     color: 'from-amber-500 to-amber-700',
-    title: 'Mecánica General',
-    desc: 'Reparación y mantenimiento completo de motores, transmisiones y sistemas mecánicos.',
+    title: 'Órdenes de Trabajo',
+    desc: 'Gestión completa de órdenes de trabajo desde la recepción hasta la entrega del vehículo.',
     items: [
-      'Reparación de motor y culata',
-      'Cambio de clutch y transmisión',
-      'Ajuste y calibración de motor',
+      'Creación y seguimiento de OT',
+      'Asignación de técnicos',
+      'Historial completo por vehículo',
     ],
   },
   {
-    icon: Gauge,
+    icon: Wrench,
     color: 'from-orange-500 to-orange-700',
-    title: 'Frenos y Suspensión',
-    desc: 'Tu seguridad es prioridad. Revisamos y reparamos todo el sistema de frenado y suspensión.',
+    title: 'Inventario y Repuestos',
+    desc: 'Control de inventario en tiempo real con alertas de stock mínimo y gestión de proveedores.',
     items: [
-      'Cambio de pastillas y discos de freno',
-      'Reparación de amortiguadores',
-      'Alineación y balanceo',
+      'Kardex de repuestos automatizado',
+      'Alertas de reorden',
+      'Gestión de proveedores',
     ],
   },
   {
     icon: Zap,
     color: 'from-yellow-500 to-yellow-700',
-    title: 'Sistema Eléctrico y Diagnóstico',
-    desc: 'Diagnóstico computarizado y reparación de sistemas eléctricos y electrónicos.',
+    title: 'Facturación Electrónica',
+    desc: 'Genera facturas electrónicas, cotizaciones y reportes financieros desde el sistema.',
     items: [
-      'Escaneo computarizado OBD-II',
-      'Reparación de alternador y motor de arranque',
-      'Diagnóstico de sensores y ECU',
+      'Facturación FEL integrada',
+      'Cotizaciones automáticas',
+      'Reportes de ingresos y gastos',
     ],
   },
   {
-    icon: Droplets,
+    icon: BarChart3,
     color: 'from-red-500 to-red-700',
-    title: 'Cambio de Aceite y Fluidos',
-    desc: 'Mantenimiento preventivo para prolongar la vida de tu vehículo.',
+    title: 'Reportes y Analítica',
+    desc: 'Dashboards en tiempo real con métricas clave para tomar mejores decisiones.',
     items: [
-      'Cambio de aceite y filtros',
-      'Líquido de frenos y dirección hidráulica',
-      'Refrigerante y líquido de transmisión',
+      'Dashboard de rendimiento',
+      'Reportes de productividad',
+      'Análisis de rentabilidad',
     ],
   },
   {
     icon: Shield,
     color: 'from-emerald-500 to-emerald-700',
-    title: 'Servicio Preventivo',
-    desc: 'Programa de mantenimiento para evitar reparaciones costosas.',
+    title: 'Multi-Tenancy',
+    desc: 'Cada taller tiene su propio espacio aislado y seguro dentro de la plataforma.',
     items: [
-      'Servicio menor y mayor',
-      'Inspección de 21 puntos',
-      'Cambio de bandas y mangueras',
+      'Datos aislados por taller',
+      'Subdominio personalizado',
+      'Roles y permisos granulares',
     ],
   },
   {
     icon: Settings,
     color: 'from-blue-500 to-blue-700',
-    title: 'Servicios Especializados',
-    desc: 'Trabajos técnicos avanzados con equipo profesional.',
+    title: 'Integraciones',
+    desc: 'Conecta el ERP con tus herramientas existentes y expande la funcionalidad.',
     items: [
-      'Reparación de aire acondicionado automotriz',
-      'Rectificación de discos y tambores',
-      'Cambio de kit de distribución',
+      'API REST completa',
+      'Integración con WhatsApp',
+      'Notificaciones automáticas',
     ],
   },
 ];
@@ -94,9 +94,9 @@ function SectionHeader() {
         <span className="w-8 h-px bg-amber-500" /> NUESTROS SERVICIOS
       </span>
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-amber mb-4">
-        Servicios del Taller
+        Módulos del Sistema
       </h2>
-      <p className="text-slate-400 text-lg">Soluciones completas para tu vehículo con técnicos certificados</p>
+      <p className="text-slate-400 text-lg">Todo lo que necesitas para gestionar tu taller mecánico de forma profesional</p>
     </div>
   );
 }

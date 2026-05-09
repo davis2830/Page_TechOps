@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Phone, Mail, MapPin, MessageCircle, ChevronRight } from 'lucide-react';
 import { useReveal } from '../useReveal';
+import config from '../../config/contacto';
 
 export default function TallerContacto() {
   const [ref, visible] = useReveal(0.1);
@@ -11,17 +12,17 @@ export default function TallerContacto() {
     e.preventDefault();
     setSending(true);
 
-    const subject = encodeURIComponent(`Solicitud de Servicio - ${formData.servicio || 'General'}`);
+    const subject = encodeURIComponent(`Solicitud de Información - Sistema ERP ${formData.servicio || 'General'}`);
     const body = encodeURIComponent(
       `Nombre: ${formData.nombre}\n` +
       `Teléfono: ${formData.telefono}\n` +
       `Email: ${formData.email}\n` +
-      `Vehículo: ${formData.vehiculo}\n` +
-      `Servicio: ${formData.servicio}\n` +
+      `Taller / Negocio: ${formData.vehiculo}\n` +
+      `Módulo de interés: ${formData.servicio}\n` +
       `Mensaje: ${formData.mensaje}`
     );
 
-    window.location.href = `mailto:steed.galvez@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${config.email}?subject=${subject}&body=${body}`;
 
     setTimeout(() => setSending(false), 2000);
   };
@@ -30,29 +31,29 @@ export default function TallerContacto() {
     {
       icon: Phone,
       label: 'Teléfono',
-      value: '5464-9404',
-      href: 'tel:+50254649404',
+      value: config.phoneDisplay,
+      href: `tel:${config.phoneFull}`,
       color: 'from-amber-500 to-orange-600',
     },
     {
       icon: MessageCircle,
       label: 'WhatsApp',
-      value: '5464-9404',
-      href: 'https://wa.me/50254649404?text=Hola%2C%20me%20interesa%20agendar%20una%20cita%20en%20el%20taller',
+      value: config.phoneDisplay,
+      href: `${config.whatsappUrl}?text=${encodeURIComponent('Hola, me interesa conocer más sobre el sistema ERP para talleres de GC Torque')}`,
       color: 'from-green-500 to-green-700',
       external: true,
     },
     {
       icon: Mail,
       label: 'Correo',
-      value: 'steed.galvez@gmail.com',
-      href: 'mailto:steed.galvez@gmail.com',
+      value: config.email,
+      href: `mailto:${config.email}`,
       color: 'from-blue-500 to-blue-700',
     },
     {
       icon: MapPin,
       label: 'Ubicación',
-      value: 'Guatemala',
+      value: config.location,
       href: null,
       color: 'from-red-500 to-red-700',
     },
@@ -68,10 +69,10 @@ export default function TallerContacto() {
               <span className="w-8 h-px bg-amber-500" /> CONTACTO
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-amber mb-4">
-              Agenda tu Cita
+              Solicita tu Demo
             </h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Contáctanos por el medio que prefieras. Estamos listos para atender tu vehículo.
+              Contáctanos para conocer nuestro sistema ERP para talleres mecánicos. Agenda una demostración sin compromiso.
             </p>
           </div>
 
@@ -109,7 +110,7 @@ export default function TallerContacto() {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/50254649404?text=Hola%2C%20me%20interesa%20agendar%20una%20cita%20en%20el%20taller"
+                href={`${config.whatsappUrl}?text=${encodeURIComponent('Hola, me interesa conocer más sobre el sistema ERP para talleres de GC Torque')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full py-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white font-semibold rounded-xl transition-all shadow-lg shadow-green-900/20 hover:-translate-y-0.5"
@@ -127,23 +128,23 @@ export default function TallerContacto() {
               </div>
               <div className="grid sm:grid-cols-2 gap-5">
                 <FormInput label="Email" type="email" value={formData.email} onChange={(v) => setFormData({ ...formData, email: v })} placeholder="tu@email.com" />
-                <FormInput label="Vehículo" value={formData.vehiculo} onChange={(v) => setFormData({ ...formData, vehiculo: v })} placeholder="Ej: Toyota Corolla 2020" />
+                <FormInput label="Taller / Negocio" value={formData.vehiculo} onChange={(v) => setFormData({ ...formData, vehiculo: v })} placeholder="Ej: Taller Mi Taller S.A." />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Servicio que necesitas</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">¿Qué te interesa?</label>
                 <select
                   required
                   value={formData.servicio}
                   onChange={(e) => setFormData({ ...formData, servicio: e.target.value })}
                   className="w-full px-4 py-3 bg-slate-800/60 border border-slate-700/60 rounded-xl text-white focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all text-sm"
                 >
-                  <option value="">Selecciona un servicio</option>
-                  <option value="mecanica-general">Mecánica General</option>
-                  <option value="frenos-suspension">Frenos y Suspensión</option>
-                  <option value="diagnostico">Diagnóstico Electrónico</option>
-                  <option value="cambio-aceite">Cambio de Aceite y Fluidos</option>
-                  <option value="servicio-preventivo">Servicio Preventivo</option>
-                  <option value="aire-acondicionado">Aire Acondicionado</option>
+                  <option value="">Selecciona una opción</option>
+                  <option value="demo-erp">Demo del Sistema ERP</option>
+                  <option value="cotizacion">Cotización del Sistema</option>
+                  <option value="soporte-tecnico">Soporte Técnico</option>
+                  <option value="implementacion">Implementación y Puesta en Marcha</option>
+                  <option value="capacitacion">Capacitación</option>
+                  <option value="integraciones">Integraciones y Personalización</option>
                   <option value="otro">Otro</option>
                 </select>
               </div>
@@ -154,13 +155,13 @@ export default function TallerContacto() {
                   value={formData.mensaje}
                   onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
                   className="w-full px-4 py-3 bg-slate-800/60 border border-slate-700/60 rounded-xl text-white focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all text-sm resize-none"
-                  placeholder="Describe el problema o servicio que necesitas..."
+                  placeholder="Cuéntanos sobre tu taller y qué necesitas del sistema ERP..."
                 />
               </div>
 
               <button type="submit" disabled={sending} className="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-amber-900/20 hover:-translate-y-0.5 group disabled:opacity-70">
                 <Send className="w-4 h-4" />
-                {sending ? 'Abriendo correo...' : 'Enviar Solicitud'}
+                {sending ? 'Abriendo correo...' : 'Solicitar Información'}
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>

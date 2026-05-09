@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronRight, Send } from 'lucide-react';
 import { useReveal } from './useReveal';
+import config from '../config/contacto';
 
 export default function Contact() {
   const [ref, visible] = useReveal(0.1);
@@ -9,6 +10,16 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const subject = encodeURIComponent(`Consultoría TechOps - ${formData.servicio || 'General'}`);
+    const body = encodeURIComponent(
+      `Nombre: ${formData.nombre}\n` +
+      `Empresa: ${formData.empresa}\n` +
+      `Email: ${formData.email}\n` +
+      `Teléfono: ${formData.telefono}\n` +
+      `Servicio: ${formData.servicio}\n` +
+      `Mensaje: ${formData.mensaje}`
+    );
+    window.location.href = `mailto:${config.email}?subject=${subject}&body=${body}`;
     setSent(true);
     setTimeout(() => setSent(false), 4000);
   };
