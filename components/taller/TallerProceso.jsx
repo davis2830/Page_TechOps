@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, ClipboardList, Wrench, CheckCircle } from 'lucide-react';
+import { Phone, ClipboardList, Settings, CheckCircle } from 'lucide-react';
 import { useReveal } from '../useReveal';
 
 const pasos = [
@@ -7,25 +7,25 @@ const pasos = [
     icon: Phone,
     step: '01',
     title: 'Contacto',
-    desc: 'Comunícate con nosotros por teléfono, WhatsApp o llena el formulario. Te atenderemos de inmediato.',
+    desc: 'Comunícate con nosotros por teléfono, WhatsApp o llena el formulario. Te asesoramos sin compromiso.',
   },
   {
     icon: ClipboardList,
     step: '02',
-    title: 'Diagnóstico',
-    desc: 'Realizamos una inspección completa con equipo computarizado para identificar la falla con precisión.',
+    title: 'Demostración',
+    desc: 'Te mostramos el sistema ERP en acción con una demo personalizada para las necesidades de tu taller.',
   },
   {
-    icon: Wrench,
+    icon: Settings,
     step: '03',
-    title: 'Reparación',
-    desc: 'Ejecutamos el trabajo con piezas de calidad. Te mantenemos informado del avance en todo momento.',
+    title: 'Implementación',
+    desc: 'Configuramos tu tenant, migramos tus datos y dejamos el sistema listo para operar.',
   },
   {
     icon: CheckCircle,
     step: '04',
-    title: 'Entrega',
-    desc: 'Pruebas de calidad finales y entrega puntual. Tu vehículo sale listo y con garantía de servicio.',
+    title: 'Operación',
+    desc: 'Tu taller operando con el ERP. Soporte continuo y actualizaciones incluidas.',
   },
 ];
 
@@ -54,7 +54,7 @@ function Header() {
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-amber mb-4">
         Nuestro Proceso
       </h2>
-      <p className="text-slate-400 text-lg">Cuatro pasos simples para dejar tu vehículo en óptimas condiciones</p>
+      <p className="text-slate-400 text-lg">Cuatro pasos simples para digitalizar tu taller mecánico</p>
     </div>
   );
 }
