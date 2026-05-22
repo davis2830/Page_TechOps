@@ -4,6 +4,7 @@ import TallerHero from '../components/taller/TallerHero';
 import TallerServicios from '../components/taller/TallerServicios';
 import TallerNosotros from '../components/taller/TallerNosotros';
 import TallerProceso from '../components/taller/TallerProceso';
+import TallerPrecios from '../components/taller/TallerPrecios';
 import TallerContacto from '../components/taller/TallerContacto';
 import TallerFooter from '../components/taller/TallerFooter';
 
@@ -25,6 +26,7 @@ export default function TallerPage() {
       <TallerServicios />
       <TallerNosotros />
       <TallerProceso />
+      <TallerPrecios />
       <TallerContacto />
       <TallerFooter />
     </div>
