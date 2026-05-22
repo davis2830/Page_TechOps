@@ -19,7 +19,7 @@ export default function TallerPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-100 overflow-x-hidden">
+    <div className="min-h-screen bg-[#0A0A0C] text-slate-100 overflow-x-hidden">
       <TallerNavbar />
       <TallerHero />
       <TallerServicios />

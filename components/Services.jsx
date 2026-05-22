@@ -1,100 +1,84 @@
 import React from 'react';
-import { Code, Zap, Eye, Check } from 'lucide-react';
-import { useReveal } from './useReveal';
 
 const services = [
   {
-    icon: Code,
-    color: 'from-blue-500 to-blue-700',
-    title: '💻 Desarrollo de Software y Plataformas B2B',
-    desc: 'Creamos el cerebro digital de tu negocio con arquitecturas web modernas, rápidas y seguras.',
-    items: [
-      'ERPs y Sistemas de Gestión a la medida (inventarios, flujos, agendas)',
-      'Facturación Electrónica en Línea (FEL) integrada de forma nativa',
-      'Plataformas de Fidelización FinTech con NFC y gestión digital',
-    ],
+    icon: 'fa-chart-line',
+    color: 'emerald',
+    title: 'Observabilidad Avanzada (Grafana Stack)',
+    desc: 'Instalación e integración desde cero de Prometheus (métricas), Loki (logs), Tempo (trazas distributed tracing) y el agente Alloy para auditorías en tiempo real y dashboards predictivos de alta precisión.',
   },
   {
-    icon: Zap,
-    color: 'from-cyan-500 to-cyan-700',
-    title: '⚙️ Automatización de Infraestructura y SRE',
-    desc: 'Eliminamos el error humano y garantizamos que tus sistemas estén siempre disponibles.',
-    items: [
-      'Infraestructura como Código: aprovisionamiento automático de servidores',
-      'Orquestación y Alta Disponibilidad con contenedores y balanceo de carga',
-      'Hardening y Redes Seguras: servidores blindados sin IPs públicas',
-    ],
+    icon: 'fa-cubes',
+    color: 'indigo',
+    title: 'Orquestación de Kubernetes (K8s)',
+    desc: 'Despliegue y administración de clústeres desde cero (bare-metal o multi-cloud). Configuración avanzada de políticas de red, pods de microservicios autoescalables y almacenamiento persistente seguro.',
   },
   {
-    icon: Eye,
-    color: 'from-indigo-500 to-purple-600',
-    title: '📊 Observabilidad y Monitoreo Proactivo (NOC)',
-    desc: 'Vemos los problemas antes de que afecten a tus clientes.',
-    items: [
-      'Tableros Transaccionales en Tiempo Real con métricas, logs y trazas',
-      'Migraciones Críticas Seguras con cero tiempo de inactividad',
-      'Alertas Tempranas para cuellos de botella y anomalías',
-    ],
+    icon: 'fa-landmark',
+    color: 'blue',
+    title: 'Core Bancario Temenos T24 e Interfaces',
+    desc: 'Soporte y tuning especializado a la arquitectura de Temenos T24, middleware corporativo, colas de mensajes y capas intermedias para garantizar la continuidad del negocio financiero.',
+  },
+  {
+    icon: 'fa-credit-card',
+    color: 'red',
+    title: 'Transaccionalidad Segura y Canales Visa',
+    desc: 'Control de flujos de pago, procesamiento de transacciones financieras bajo estándares Visa y mantenimiento seguro de servidores web como Nginx, Apache y JBoss.',
+  },
+  {
+    icon: 'fa-gauge',
+    color: 'yellow',
+    title: 'Pruebas de Estrés con Grafana K6',
+    desc: 'Automatización de pruebas de carga masivas con k6. Identificación de cuellos de botella en bases de datos relacionales, consumo de CPU/Memoria y límites de tráfico transaccional.',
+  },
+  {
+    icon: 'fa-gears',
+    color: 'brand',
+    title: 'Infraestructura Boutique como Código',
+    desc: 'Diseño e implementación de automatizaciones fluidas con Ansible y scripts inteligentes en Python para provisionar entornos limpios, robustos y libres de fallos manuales.',
+    featured: true,
   },
 ];
 
+const colorMap = {
+  emerald: { bg: 'bg-emerald-500/10', text: 'text-[#3ECF8E]', hover: 'hover:border-emerald-500/20' },
+  indigo: { bg: 'bg-indigo-500/10', text: 'text-indigo-400', hover: 'hover:border-indigo-500/20' },
+  blue: { bg: 'bg-blue-500/10', text: 'text-blue-400', hover: 'hover:border-blue-500/20' },
+  red: { bg: 'bg-red-500/10', text: 'text-red-400', hover: 'hover:border-red-500/20' },
+  yellow: { bg: 'bg-yellow-500/10', text: 'text-yellow-400', hover: 'hover:border-yellow-500/20' },
+  brand: { bg: 'bg-[#3ECF8E]/10', text: 'text-[#3ECF8E]', hover: 'hover:border-[#3ECF8E]/40' },
+};
+
 export default function Services() {
   return (
-    <section id="servicios" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader />
-        <div className="space-y-6 mt-14">
-          {services.map((s, i) => (
-            <ServiceCard key={i} service={s} index={i} />
-          ))}
+    <section id="servicios" className="py-20 max-w-7xl mx-auto px-6 border-t border-white/5">
+      <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="inline-flex items-center space-x-1 bg-indigo-500/10 text-indigo-400 text-[10px] font-mono-custom px-3 py-1 rounded-full uppercase tracking-wider font-semibold">
+          <i className="fa-solid fa-microchip" /> Portafolio de Soluciones Técnicas
         </div>
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#FAFAFA]">Servicios de Ingeniería de Alta Complejidad</h2>
+        <p className="text-sm text-[#8E8E9F]">
+          Soporte técnico avanzado y diseño de arquitecturas robustas ejecutadas directamente por un especialista. Experiencia probada en entornos bancarios y sistemas de alta transaccionalidad.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((s) => {
+          const c = colorMap[s.color];
+          return (
+            <div
+              key={s.title}
+              className={`${s.featured ? 'bg-[#3ECF8E]/5 border-[#3ECF8E]/20' : 'bg-[#121216]/60 border-white/5'} border p-6 rounded-2xl space-y-4 ${c.hover} transition-all duration-300`}
+            >
+              <div className={`w-10 h-10 rounded-xl ${c.bg} ${c.text} flex items-center justify-center text-lg`}>
+                <i className={`fa-solid ${s.icon}`} />
+              </div>
+              <h4 className="text-base font-bold text-[#FAFAFA]">{s.title}</h4>
+              <p className="text-xs text-[#8E8E9F] leading-relaxed">{s.desc}</p>
+            </div>
+          );
+        })}
       </div>
     </section>
-  );
-}
-
-function SectionHeader() {
-  const [ref, visible] = useReveal();
-  return (
-    <div ref={ref} className={`text-center max-w-2xl mx-auto transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-      <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-cyan-400 mb-4">
-        <span className="w-8 h-px bg-cyan-500" /> SERVICIOS
-      </span>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text mb-4">
-        Nuestros Servicios
-      </h2>
-      <p className="text-slate-400 text-lg">Tres pilares para transformar tu operación</p>
-    </div>
-  );
-}
-
-function ServiceCard({ service, index }) {
-  const [ref, visible] = useReveal(0.1);
-  const Icon = service.icon;
-
-  return (
-    <div
-      ref={ref}
-      className={`glass-card rounded-2xl p-8 lg:p-10 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      style={{ transitionDelay: `${index * 150}ms` }}
-    >
-      <div className="flex flex-col lg:flex-row items-start gap-6">
-        <div className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
-          <Icon className="w-7 h-7 text-white" />
-        </div>
-        <div className="flex-1">
-          <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
-          <p className="text-slate-400 mb-5">{service.desc}</p>
-          <ul className="space-y-2.5">
-            {service.items.map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-slate-400 text-sm">
-                <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
   );
 }
