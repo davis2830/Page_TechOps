@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" role="img" aria-labelledby="title desc">
+  <title id="title">TechOPS — versión clara</title>
+  <desc id="desc">Logotipo TechOPS para fondos claros.</desc>
+  <defs>
+    <linearGradient id="infra" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#13c696"/><stop offset="1" stop-color="#087a65"/></linearGradient>
+    <linearGradient id="tele" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0cafa2"/><stop offset="1" stop-color="#066b82"/></linearGradient>
+    <linearGradient id="ops" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0aa78e"/><stop offset="1" stop-color="#07586f"/></linearGradient>
+  </defs>
+  <g transform="scale(.75)">
+    <path d="M13 18h33l-6 18H22L13 18Z" fill="url(#infra)"/>
+    <path d="M50 18h33l-9 18H56l-6-18Z" fill="url(#tele)"/>
+    <path d="M46 18h4l6 18H40l6-18Z" fill="#12b994"/>
+    <path d="M40 36h16v39l-8 13-8-13V36Z" fill="url(#ops)"/>
+    <path d="M48 36h8v39l-8 13V36Z" fill="#064f68" opacity=".36"/>
+    <path d="M56 36h18l-6 11H56V36Z" fill="#075f72" opacity=".7"/>
+  </g>
+  <text x="82" y="48" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="700" letter-spacing="-2" fill="#0f172a">Tech</text>
+  <text x="172" y="48" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="800" letter-spacing="-2" fill="#087b55">OPS</text>
+</svg>

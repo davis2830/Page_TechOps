@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" role="img" aria-labelledby="title desc">
+  <title id="title">TechOPS — Continuidad, versión clara</title>
+  <desc id="desc">Monograma TO en verde profundo para superficies claras.</desc>
+  <g fill="none" stroke="#087b55" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M51 22c7.5 5.3 11.5 13.1 11.5 22C62.5 56.1 50.7 65 36 65 21 65 9 52.6 9 37.5 9 24.3 18.6 13.4 31.5 10"/>
+    <path d="M19.5 22H51M35.5 22v29"/>
+  </g>
+</svg>

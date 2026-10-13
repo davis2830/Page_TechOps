@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.gctorque.com/sitemap.xml
+Sitemap: https://gctechops.com/sitemap.xml

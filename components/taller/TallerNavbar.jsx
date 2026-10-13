@@ -14,9 +14,9 @@ export default function TallerNavbar() {
   }, []);
 
   const links = [
-    { href: '#servicios-taller', label: 'Servicios' },
-    { href: '#nosotros', label: 'Nosotros' },
-    { href: '#proceso', label: 'Proceso' },
+    { href: '#servicios-taller', label: 'Módulos' },
+    { href: '#nosotros', label: 'Producto' },
+    { href: '#proceso', label: 'Implementación' },
     { href: '#contacto-taller', label: 'Contacto' },
   ];
 
@@ -24,15 +24,15 @@ export default function TallerNavbar() {
     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'glass shadow-2xl shadow-black/20' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <a href="#" className="flex items-center gap-3 group">
+          <Link to="/taller" className="flex items-center gap-3 group">
             <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
               <Wrench className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
               <span className="text-2xl font-bold gradient-text-amber leading-tight">{config.businessName}</span>
-              <span className="text-[10px] text-slate-500 tracking-widest">TALLER MECÁNICO</span>
+              <span className="text-[10px] text-slate-500 tracking-widest">ERP PARA TALLERES</span>
             </div>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {links.map(l => (

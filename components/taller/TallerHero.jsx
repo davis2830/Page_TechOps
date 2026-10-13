@@ -16,33 +16,31 @@ export default function TallerHero() {
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-amber-500/20 text-amber-400 text-xs font-semibold tracking-wider animate-fade-in">
               <Wrench className="w-3.5 h-3.5" />
-              TALLER MECÁNICO PROFESIONAL
+              SOFTWARE DE GESTIÓN PARA TALLERES
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight">
-              <span className="gradient-text-amber">Tu vehículo</span>
+              <span className="text-white">Tu taller,</span>
               <br />
-              <span className="text-white">en las mejores</span>
-              <br />
-              <span className="gradient-text-amber">manos</span>
+              <span className="gradient-text-amber">bajo control.</span>
             </h1>
 
             <p className="text-lg text-slate-400 leading-relaxed max-w-lg">
-              Sistema ERP profesional para talleres mecánicos. Gestiona órdenes de trabajo, inventario, clientes y facturación desde una sola plataforma.
+              Centraliza órdenes de trabajo, inventario, clientes y seguimiento operativo en un ERP diseñado para talleres mecánicos.
             </p>
 
             <div className="flex flex-wrap gap-6 text-sm text-slate-400">
               <div className="flex items-center gap-2">
                 <Monitor className="w-4 h-4 text-amber-400" />
-                <span>Multi-tenancy</span>
+                <span>Información centralizada</span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-amber-400" />
-                <span>Seguridad empresarial</span>
+                <span>Roles y permisos</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-400" />
-                <span>Soporte 24/7</span>
+                <span>Implementación guiada</span>
               </div>
             </div>
 
@@ -72,21 +70,21 @@ export default function TallerHero() {
                   <div className="w-3 h-3 rounded-full bg-red-500/80" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                   <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                  <span className="ml-3 text-xs text-slate-500 font-mono">gc-torque-dashboard</span>
+                    <span className="ml-3 text-xs text-slate-500 font-mono">vista de producto · orden de trabajo</span>
                 </div>
                 <div className="p-6 space-y-4 font-mono text-sm">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-                    <span className="text-amber-400">Estado del Taller:</span>
-                    <span className="text-green-400 font-semibold">OPERATIVO</span>
+                    <span className="text-amber-400">Orden OT-1048</span>
+                    <span className="text-green-400 font-semibold">EN PROCESO</span>
                   </div>
                   <div className="space-y-2.5 text-slate-400">
                     {[
-                      { label: 'Mecánica General', status: 'Disponible', color: 'text-green-400' },
-                      { label: 'Frenos y Suspensión', status: 'Disponible', color: 'text-green-400' },
-                      { label: 'Diagnóstico Electrónico', status: 'Disponible', color: 'text-green-400' },
-                      { label: 'Servicio Express', status: 'Activo', color: 'text-amber-400' },
-                      { label: 'Cambio de Aceite', status: 'Disponible', color: 'text-green-400' },
+                      { label: 'Recepción', status: 'Completa', color: 'text-green-400' },
+                      { label: 'Diagnóstico', status: 'Completo', color: 'text-green-400' },
+                      { label: 'Presupuesto', status: 'Aprobado', color: 'text-green-400' },
+                      { label: 'Reparación', status: 'En curso', color: 'text-amber-400' },
+                      { label: 'Entrega', status: 'Pendiente', color: 'text-slate-500' },
                     ].map((item) => (
                       <div key={item.label} className="flex justify-between items-center py-1 border-b border-slate-800/40 last:border-0">
                         <span className="text-slate-500">{item.label}</span>
@@ -95,8 +93,8 @@ export default function TallerHero() {
                     ))}
                   </div>
                   <div className="pt-3 mt-2 border-t border-slate-800/60 flex items-center justify-between">
-                    <span className="text-slate-600">Satisfacción</span>
-                    <span className="text-2xl font-bold text-amber-400">98.5%</span>
+                    <span className="text-slate-600">Vista ilustrativa</span>
+                    <span className="text-sm font-bold text-amber-400">GC Torque ERP</span>
                   </div>
                 </div>
               </div>

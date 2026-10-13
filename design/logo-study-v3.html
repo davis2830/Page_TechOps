@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TechOPS — Convergencia</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #070c0b; color: #f2f7f5; font-family: Inter, system-ui, sans-serif; }
+    .shell { width: min(1100px, calc(100% - 40px)); margin: auto; padding: 56px 0 90px; }
+    .kicker { color: #54ecc0; font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    h1 { max-width: 860px; margin: 14px 0 18px; font-size: clamp(42px, 6vw, 74px); letter-spacing: -.065em; line-height: 1.05; }
+    .lead { max-width: 780px; color: #a7bab3; line-height: 1.8; }
+    .feature { margin-top: 42px; border: 1px solid #275145; border-radius: 25px; overflow: hidden; }
+    .hero { min-height: 365px; display: flex; align-items: center; justify-content: center; gap: clamp(12px, 4vw, 54px); padding: 30px; background: radial-gradient(circle at 30% 40%, #173e34 0, #07120f 50%, #060a0a 100%); }
+    .hero img { width: clamp(120px, 22vw, 220px); height: auto; filter: drop-shadow(0 18px 30px rgba(0, 214, 151, .15)); }
+    .hero strong { font-size: clamp(39px, 7vw, 78px); letter-spacing: -.075em; white-space: nowrap; }
+    .hero strong span { color: #36e4ab; }
+    .bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 28px 32px; background: #0d1b16; }
+    .bottom h2 { margin: 0 0 7px; font-size: 23px; }
+    .bottom p { margin: 0; color: #9fb0a9; font-size: 14px; line-height: 1.7; }
+    .sizes { display: flex; align-items: end; flex-wrap: wrap; gap: 24px; }
+    .size { display: grid; justify-items: center; gap: 8px; font-size: 11px; color: #91a49b; }
+    .test { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid #28453c; border-radius: 22px; }
+    .test > div { min-height: 220px; display: flex; align-items: center; justify-content: center; gap: 20px; padding: 24px; }
+    .test .dark { background: #080d0b; }
+    .test .light { background: #edf6ef; color: #0c211a; }
+    .test img { width: 70px; height: 70px; }
+    .test strong { font-size: clamp(23px, 3.5vw, 38px); letter-spacing: -.07em; }
+    .test strong span { color: #119a6a; }
+    .note { margin-top: 23px; padding: 22px 26px; border-left: 2px solid #43e3aa; background: #10201a; color: #b1c4b9; line-height: 1.7; font-size: 14px; }
+    @media (max-width: 720px) { .hero { min-height: 270px; } .bottom, .test { grid-template-columns: 1fr; } .bottom { padding: 22px; } .hero strong { font-size: clamp(30px, 7vw, 50px); } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="kicker">TechOPS / Identidad refinada</div>
+    <h1>Una T que conecta lo que importa.</h1>
+    <p class="lead">Infraestructura y telemetría son dos rutas distintas que convergen en operación. La marca conserva una T contundente, pero su geometría cuenta la filosofía de Nexo.</p>
+    <section class="feature"><div class="hero"><img src="/design/marks/techops-convergencia.svg" alt="Nuevo símbolo T de TechOPS"><strong>Tech<span>OPS</span></strong></div><div class="bottom"><div><h2>Convergencia</h2><p>Dos superficies en el brazo superior se unen al eje central. Las facetas aportan profundidad sin depender de brillos, sombras o detalles frágiles.</p></div><div class="sizes"><div class="size"><img src="/design/marks/techops-convergencia.svg" width="16" height="16" style="width:16px;height:16px" alt=""><span>16 px</span></div><div class="size"><img src="/design/marks/techops-convergencia.svg" width="32" height="32" style="width:32px;height:32px" alt=""><span>32 px</span></div><div class="size"><img src="/design/marks/techops-convergencia.svg" width="64" height="64" style="width:64px;height:64px" alt=""><span>64 px</span></div></div></div></section>
+    <div class="test"><div class="dark"><img src="/design/marks/techops-convergencia.svg" alt=""><strong>Tech<span>OPS</span></strong></div><div class="light"><img src="/design/marks/techops-convergencia.svg" alt=""><strong>Tech<span>OPS</span></strong></div></div>
+    <div class="note">TechOPS sería la marca principal de ingeniería y consultoría. Sentinel conservaría su propio escudo como producto de observabilidad; la relación visual vendría de la paleta, las facetas y el rigor geométrico.</div>
+  </div>
+</body>
+</html>

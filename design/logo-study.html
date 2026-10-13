@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TechOPS — estudio de símbolo</title>
+  <style>
+    :root { font-family: Inter, system-ui, sans-serif; color: #ecf3ef; background: #0a100d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: clamp(20px, 5vw, 64px); }
+    header { max-width: 960px; margin: 0 auto 36px; }
+    .eyebrow { color: #34d399; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    h1 { margin: 12px 0; font-size: clamp(32px, 5vw, 56px); letter-spacing: -.05em; }
+    p { color: #a5b5ad; line-height: 1.65; }
+    main { max-width: 960px; margin: auto; display: grid; gap: 20px; }
+    article { overflow: hidden; border: 1px solid #294139; border-radius: 20px; }
+    .info { padding: 20px 24px; background: #102019; }
+    h2 { margin: 0 0 5px; font-size: 20px; }
+    .info p { margin: 0; font-size: 13px; }
+    .specimens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .field { min-width: 0; padding: 24px; display: flex; align-items: end; gap: 18px; flex-wrap: wrap; }
+    .field.dark { background: #080b0a; }
+    .field.light { background: #f3f8f4; color: #102019; }
+    .sample { display: grid; justify-items: center; gap: 10px; }
+    .sample span { font-size: 10px; opacity: .65; }
+    img { display: block; }
+    .light img { background: #12231a; border-radius: 6px; }
+    .light.continuidad img { background: transparent; }
+    .light .sample:nth-child(n+3) img { padding: 4px; }
+    .light.continuidad .sample:nth-child(n+3) img { padding: 0; }
+    .recommended { border-color: #34d399; }
+    @media (max-width: 600px) { .specimens { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header><div class="eyebrow">Exploración de identidad · TechOPS</div><h1>Un símbolo más claro, sin adornos.</h1><p>Comparación del icono actual con dos propuestas vectoriales. Son borradores de revisión; el logo publicado todavía no cambia.</p></header>
+  <main>
+    <article><div class="info"><h2>Actual</h2><p>Anillo, T y puntos terminales.</p></div><div class="specimens"><div class="field dark"><div class="sample"><img src="/techops-mark.svg" width="16" height="16" alt=""><span>16 px</span></div><div class="sample"><img src="/techops-mark.svg" width="32" height="32" alt=""><span>32 px</span></div><div class="sample"><img src="/techops-mark.svg" width="120" height="120" alt=""><span>120 px</span></div></div><div class="field light"><div class="sample"><img src="/techops-mark.svg" width="16" height="16" alt=""><span>16 px</span></div><div class="sample"><img src="/techops-mark.svg" width="32" height="32" alt=""><span>32 px</span></div><div class="sample"><img src="/techops-mark.svg" width="120" height="120" alt=""><span>120 px</span></div></div></div></article>
+    <article class="recommended"><div class="info"><h2>01 / Continuidad · Recomendada</h2><p>La T se une al circuito abierto de la O. Un trazo único, sin puntos ni efectos.</p></div><div class="specimens"><div class="field dark"><div class="sample"><img src="/techops-mark-continuidad.svg" width="16" height="16" alt=""><span>16 px</span></div><div class="sample"><img src="/techops-mark-continuidad.svg" width="32" height="32" alt=""><span>32 px</span></div><div class="sample"><img src="/techops-mark-continuidad.svg" width="120" height="120" alt=""><span>120 px</span></div></div><div class="field light continuidad"><div class="sample"><img src="/techops-mark-continuidad-light.svg" width="16" height="16" alt=""><span>16 px</span></div><div class="sample"><img src="/techops-mark-continuidad-light.svg" width="32" height="32" alt=""><span>32 px</span></div><div class="sample"><img src="/techops-mark-continuidad-light.svg" width="120" height="120" alt=""><span>120 px</span></div></div></div></article>
+    <article><div class="info"><h2>02 / Precisión</h2><p>La O queda como órbita abierta y la T gana peso y espacio interior.</p></div><div class="specimens"><div class="field dark"><div class="sample"><img src="/techops-mark-precision.svg" width="16" height="16" alt=""><span>16 px</span></div><div class="sample"><img src="/techops-mark-precision.svg" width="32" height="32" alt=""><span>32 px</span></div><div class="sample"><img src="/techops-mark-precision.svg" width="120" height="120" alt=""><span>120 px</span></div></div><div class="field light"><div class="sample"><img src="/techops-mark-precision.svg" width="16" height="16" alt=""><span>16 px</span></div><div class="sample"><img src="/techops-mark-precision.svg" width="32" height="32" alt=""><span>32 px</span></div><div class="sample"><img src="/techops-mark-precision.svg" width="120" height="120" alt=""><span>120 px</span></div></div></div></article>
+  </main>
+</body>
+</html>

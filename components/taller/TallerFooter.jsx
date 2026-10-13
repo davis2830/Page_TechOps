@@ -23,12 +23,12 @@ export default function TallerFooter() {
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4">Servicios</h4>
+            <h4 className="text-sm font-semibold text-white mb-4">Producto</h4>
             <ul className="space-y-2.5 text-sm text-slate-500">
-              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Mecánica General</a></li>
-              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Frenos y Suspensión</a></li>
-              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Diagnóstico Electrónico</a></li>
-              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Servicio Preventivo</a></li>
+              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Órdenes de trabajo</a></li>
+              <li><a href="#servicios-taller" className="hover:text-amber-400 transition-colors">Inventario</a></li>
+              <li><a href="#precios-taller" className="hover:text-amber-400 transition-colors">Planes</a></li>
+              <li><a href="#contacto-taller" className="hover:text-amber-400 transition-colors">Solicitar demo</a></li>
             </ul>
           </div>
 
@@ -40,6 +40,9 @@ export default function TallerFooter() {
               <li><a href="#proceso" className="hover:text-amber-400 transition-colors">Nuestro Proceso</a></li>
               <li><a href="#contacto-taller" className="hover:text-amber-400 transition-colors">Contacto</a></li>
               <li><Link to="/" className="hover:text-cyan-400 transition-colors">TechOps - IT</Link></li>
+              <li><Link to="/privacidad" className="hover:text-amber-400 transition-colors">Privacidad</Link></li>
+              <li><Link to="/terminos" className="hover:text-amber-400 transition-colors">Términos</Link></li>
+              <li><Link to="/seguridad" className="hover:text-amber-400 transition-colors">Seguridad</Link></li>
             </ul>
           </div>
 

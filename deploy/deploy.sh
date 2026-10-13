@@ -38,12 +38,11 @@ echo "    Build generado en $DEPLOY_DIR/dist/"
 
 # 4. Configurar nginx
 echo "[4/5] Configurando nginx..."
-if [ ! -f "$NGINX_AVAILABLE" ]; then
-    cp "$DEPLOY_DIR/$NGINX_CONF_SRC" "$NGINX_AVAILABLE"
-    echo "    Config copiada a $NGINX_AVAILABLE"
-else
-    echo "    Config ya existe en $NGINX_AVAILABLE (no se sobreescribe)"
-fi
+# Mantener la configuración de producción sincronizada con el repositorio.
+# Esto es necesario para que las rutas SPA (/taller y páginas legales) usen
+# el fallback a index.html también al abrirse o recargarse directamente.
+install -m 0644 "$DEPLOY_DIR/$NGINX_CONF_SRC" "$NGINX_AVAILABLE"
+echo "    Config actualizada en $NGINX_AVAILABLE"
 
 if [ ! -L "$NGINX_ENABLED" ]; then
     ln -s "$NGINX_AVAILABLE" "$NGINX_ENABLED"

@@ -10,6 +10,11 @@ export default function TallerContacto() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!config.web3formsKey) {
+      setStatus('config');
+      setTimeout(() => setStatus('idle'), 7000);
+      return;
+    }
     setStatus('sending');
 
     try {
@@ -29,7 +34,8 @@ export default function TallerContacto() {
         }),
       });
 
-      if (res.ok) {
+      const result = await res.json().catch(() => ({}));
+      if (res.ok && result.success !== false) {
         setStatus('sent');
         setFormData({ nombre: '', telefono: '', email: '', vehiculo: '', servicio: '', mensaje: '' });
         setTimeout(() => setStatus('idle'), 5000);
@@ -183,6 +189,11 @@ export default function TallerContacto() {
               {status === 'error' && (
                 <div className="flex items-center gap-2 text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
                   Error al enviar. Intenta de nuevo o escríbenos a {config.email}
+                </div>
+              )}
+              {status === 'config' && (
+                <div className="text-amber-300 text-sm bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-3">
+                  El formulario aún no está habilitado. Escríbenos a {config.email} o utiliza WhatsApp.
                 </div>
               )}
 

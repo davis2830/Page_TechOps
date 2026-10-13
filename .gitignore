@@ -30,3 +30,6 @@ Perfil_Bot/
 
 # Archivos de prueba
 prueba_api.js
+
+# Renderizados temporales de QA
+tmp/

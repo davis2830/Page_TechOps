@@ -1,182 +1,118 @@
 import React, { useState } from 'react';
+import { ArrowRight, CalendarDays, CheckCircle2, Loader2, Mail, MessageCircle, Send } from 'lucide-react';
 import config from '../config/contacto';
+import { trackEvent } from './Analytics';
 
-const step1Options = [
-  { value: 'observability', title: 'Falta de Observabilidad (M\u00e9tricas/Logs)', desc: 'Falta de visualizaci\u00f3n unificada de m\u00e9tricas, trazas distributed tracing o logs.' },
-  { value: 'k8s', title: 'Orquestaci\u00f3n de Contenedores Compleja', desc: 'Dificultad o falta de control para configurar y estabilizar cl\u00fasteres de Kubernetes.' },
-  { value: 'banking', title: 'Estabilidad de Core Bancario / Transaccional', desc: 'Problemas de cuello de botella en sistemas transaccionales cr\u00edticos (Visa / T24).' },
-  { value: 'failures', title: 'Falta de Pruebas de Carga Realistas', desc: 'El sistema falla en picos de demanda por no realizar simulaciones previas de carga.' },
-];
-
-const step2Options = [
-  { value: 'small', title: '< 50 Servidores/Contenedores', desc: 'Equipos en fases iniciales con arquitecturas monol\u00edticas o microservicios b\u00e1sicos.' },
-  { value: 'medium', title: '50 a 200 Servidores/Contenedores', desc: 'Ecosistemas en pleno crecimiento con clusters Kubernetes distribuidos.' },
-  { value: 'large', title: '> 200 Servidores/Contenedores', desc: 'Estructuras Multi-Cloud de alta complejidad y tr\u00e1fico global masivo.' },
-  { value: 'none', title: 'Sistemas Core Bancarios / Transaccionales', desc: 'Entornos bancarios cr\u00edticos o integraciones complejas de pasarelas de pago.' },
-];
+const initialData = { name: '', company: '', email: '', challenge: '', scale: '', timeline: '' };
 
 export default function DiagnosticForm() {
-  const [step, setStep] = useState(1);
-  const [bottleneck, setBottleneck] = useState('observability');
-  const [scale, setScale] = useState('small');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [sending, setSending] = useState(false);
-  const [modal, setModal] = useState(null);
+  const [form, setForm] = useState(initialData);
+  const [status, setStatus] = useState('idle');
+  const [message, setMessage] = useState('');
+  const [started, setStarted] = useState(false);
+  const configured = Boolean(config.web3formsKey);
 
-  const handleSubmit = async () => {
-    if (!name.trim() || !email.trim()) {
-      setModal({ type: 'error', title: 'Campos requeridos', msg: 'Por favor, complete todos los campos de contacto del paso 3 para poder procesar la auditor\u00eda preliminar de su arquitectura.' });
+  const setField = (field) => (event) => setForm({ ...form, [field]: event.target.value });
+
+  const handleFocus = () => {
+    if (started) return;
+    setStarted(true);
+    trackEvent('Diagnostic Form Started', { form: 'diagnostic' });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!event.currentTarget.reportValidity()) return;
+    if (!configured) {
+      setStatus('config');
+      setMessage('El formulario todavía no está habilitado. Puedes escribirnos directamente por correo.');
       return;
     }
-    setSending(true);
+
+    setStatus('sending');
+    setMessage('');
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: config.web3formsKey,
-          subject: 'Diagn\u00f3stico T\u00e9cnico TechOps - Nueva Solicitud',
-          from_name: name,
-          email: email,
-          desafio_principal: bottleneck,
-          volumen_infraestructura: scale,
-          nombre_completo: name,
-          correo_corporativo: email,
+          subject: 'Solicitud de diagnóstico técnico TechOPS',
+          from_name: form.name,
+          nombre: form.name,
+          empresa: form.company,
+          email: form.email,
+          desafio: form.challenge,
+          escala: form.scale,
+          plazo: form.timeline,
+          botcheck: '',
         }),
       });
-      if (res.ok) {
-        setModal({ type: 'success', title: '\u00a1Diagn\u00f3stico T\u00e9cnico Iniciado!', msg: '\u00a1Excelente ' + name + '! Su solicitud fue registrada exitosamente. Un Ingeniero de Soluciones Principal se pondr\u00e1 en contacto con usted a trav\u00e9s de ' + email + ' en los pr\u00f3ximos 15 minutos para guiarle.' });
-      } else {
-        setModal({ type: 'error', title: 'Error al enviar', msg: 'Hubo un problema al enviar su solicitud. Por favor intente nuevamente.' });
-      }
-    } catch (e) {
-      setModal({ type: 'error', title: 'Error al enviar', msg: 'Hubo un problema al enviar su solicitud. Por favor intente nuevamente.' });
-    }
-    setSending(false);
-  };
-
-  const handleNext = () => {
-    if (step < 3) {
-      setStep(step + 1);
-    } else {
-      handleSubmit();
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.success === false) throw new Error('submission_failed');
+      setStatus('sent');
+      setForm(initialData);
+      trackEvent('Diagnostic Form Completed', { form: 'diagnostic' });
+    } catch {
+      setStatus('error');
+      setMessage('No pudimos enviar la solicitud. Intenta nuevamente o utiliza el correo de contacto.');
     }
   };
-
-  const RadioGroup = ({ options, value, onChange }) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {options.map(opt => (
-        <label key={opt.value} className={'cursor-pointer border ' + (value === opt.value ? 'border-[#3ECF8E]/30 bg-[#3ECF8E]/5' : 'border-white/5 hover:border-[#3ECF8E]/30') + ' bg-[#0A0A0C] p-5 rounded-xl flex items-start space-x-3 transition-colors'}>
-          <input type="radio" name={'radio_' + options[0].value} value={opt.value} checked={value === opt.value} onChange={() => onChange(opt.value)} className="mt-1 accent-[#3ECF8E]" />
-          <div>
-            <span className="block text-xs font-bold text-[#FAFAFA]">{opt.title}</span>
-            <span className="block text-[11px] text-[#8E8E9F] mt-1">{opt.desc}</span>
-          </div>
-        </label>
-      ))}
-    </div>
-  );
 
   return (
-    <section id="diagnostico" className="py-24 bg-[#121216]/20 border-t border-white/5 relative">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center space-y-4 mb-12">
-          <span className="text-xs font-mono-custom uppercase tracking-widest text-indigo-400">Automatizaci&oacute;n de Diagn&oacute;stico</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#FAFAFA]">Auditor&iacute;a de Sistemas Prematuros</h2>
-          <p className="text-[#8E8E9F] text-sm max-w-lg mx-auto">
-            Complete este r&aacute;pido cuestionario t&eacute;cnico para recibir un informe preliminar de su arquitectura e infraestructura de IT.
-          </p>
-        </div>
-
-        <div className="bg-[#121216] border border-white/5 rounded-2xl overflow-hidden shadow-2xl relative">
-          <div className="bg-[#0A0A0C] border-b border-white/5 px-8 py-4 flex justify-between items-center">
-            <span className="text-xs font-mono-custom text-[#8E8E9F]">Paso <span className="text-[#3ECF8E] font-bold">{step}</span> de 3</span>
-            <div className="w-32 bg-[#121216] rounded-full h-1.5 overflow-hidden border border-white/5">
-              <div className="bg-[#3ECF8E] h-full transition-all duration-300" style={{ width: (step / 3 * 100) + '%' }} />
-            </div>
-          </div>
-
-          <div className="p-8 md:p-12 space-y-8">
-            {step === 1 && (
-              <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-[#FAFAFA] flex items-center gap-2">
-                  <i className="fa-solid fa-circle-question text-[#3ECF8E]" /> &iquest;Cu&aacute;l es su mayor desaf&iacute;o operativo en la actualidad?
-                </h3>
-                <RadioGroup options={step1Options} value={bottleneck} onChange={setBottleneck} />
-              </div>
-            )}
-
-            {step === 2 && (
-              <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-[#FAFAFA] flex items-center gap-2">
-                  <i className="fa-solid fa-server text-indigo-400" /> &iquest;Qu&eacute; volumen de infraestructura gestiona actualmente?
-                </h3>
-                <RadioGroup options={step2Options} value={scale} onChange={setScale} />
-              </div>
-            )}
-
-            {step === 3 && (
-              <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-[#FAFAFA] flex items-center gap-2">
-                  <i className="fa-solid fa-address-card text-[#3ECF8E]" /> Complete sus datos de contacto
-                </h3>
-                <p className="text-xs text-[#8E8E9F]">Un Consultor Principal revisar&aacute; sus respuestas previas antes de programar su sesi&oacute;n.</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="block text-[10px] font-mono-custom uppercase tracking-wider text-[#8E8E9F]">Nombre Completo</label>
-                    <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Ej. Carlos Mendoza" className="w-full bg-[#0A0A0C] border border-white/5 focus:border-[#3ECF8E] rounded-xl px-4 py-3 text-sm text-[#FAFAFA] outline-none transition-all" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="block text-[10px] font-mono-custom uppercase tracking-wider text-[#8E8E9F]">Correo Corporativo</label>
-                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Ej. carlos@empresa.com" className="w-full bg-[#0A0A0C] border border-white/5 focus:border-[#3ECF8E] rounded-xl px-4 py-3 text-sm text-[#FAFAFA] outline-none transition-all" />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <div className="flex items-center justify-between pt-6 border-t border-white/5">
-              {step > 1 ? (
-                <button type="button" onClick={() => setStep(step - 1)} className="text-xs font-mono-custom uppercase tracking-wider text-[#8E8E9F] hover:text-[#FAFAFA] transition-colors flex items-center gap-2">
-                  <i className="fa-solid fa-arrow-left" /> Atr&aacute;s
-                </button>
-              ) : <div />}
-              <button
-                type="button"
-                onClick={handleNext}
-                disabled={sending}
-                className="bg-gradient-to-r from-[#3ECF8E] to-emerald-500 hover:from-emerald-400 hover:to-emerald-600 text-[#0A0A0C] font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs font-mono-custom uppercase tracking-wider shadow-lg shadow-emerald-500/10 disabled:opacity-50"
-              >
-                {sending ? 'Enviando...' : step < 3 ? (<>Siguiente Paso <i className="fa-solid fa-arrow-right ml-1" /></>) : (<>Registrar y Agendar <i className="fa-solid fa-calendar-check ml-1" /></>)}
-              </button>
-            </div>
+    <section id="diagnostico" className="border-t border-white/10 bg-[#0a0f0c]">
+      <div className="section-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+        <div>
+          <div className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400"><span className="h-px w-8 bg-emerald-400/70" /> Diagnóstico inicial</div>
+          <h2 className="section-title">Conversemos sobre el punto que hoy limita tu operación.</h2>
+          <p className="section-copy">{configured ? 'Comparte el contexto esencial. Revisaremos la solicitud antes de la llamada para dedicar el tiempo a decisiones útiles.' : 'Cuéntame el desafío principal de tu plataforma. Revisaré el contexto contigo y acordaremos un siguiente paso concreto.'}</p>
+          <div className="mt-8 space-y-4 text-sm text-slate-400">
+            {['Revisión inicial del contexto', 'Conversación técnica enfocada', 'Siguiente paso claro y sin compromiso'].map(item => <div key={item} className="flex items-center gap-3"><CheckCircle2 size={17} className="text-emerald-400" />{item}</div>)}
           </div>
         </div>
+
+        {!configured ? (
+          <div className="trust-card flex flex-col justify-center p-8 sm:p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-400">Contacto directo</p>
+            <h3 className="mt-4 text-2xl font-semibold text-white">Hablemos de tu operación.</h3>
+            <p className="mt-3 max-w-md text-sm leading-7 text-slate-400">Escríbeme con una descripción breve del problema. Podemos comenzar por correo o WhatsApp.</p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row"><a href={`mailto:${config.email}?subject=${encodeURIComponent('Diagnóstico técnico TechOPS')}`} className="btn-primary justify-center px-6 py-3.5"><Mail size={17} /> Escribir por correo</a><a href={config.whatsappUrl} target="_blank" rel="noreferrer" onClick={() => trackEvent('WhatsApp Clicked', { placement: 'diagnostic' })} className="btn-secondary justify-center px-6 py-3.5"><MessageCircle size={17} /> WhatsApp</a></div>
+            <p className="mt-6 break-all text-xs text-slate-500">{config.email}</p>
+          </div>
+        ) : status === 'sent' ? (
+          <div className="trust-card flex min-h-[440px] flex-col items-center justify-center p-8 text-center">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-400/10 text-emerald-400"><CheckCircle2 size={28} /></div>
+            <h3 className="mt-6 text-2xl font-semibold text-white">Solicitud recibida</h3>
+            <p className="mt-3 max-w-md leading-7 text-slate-400">Gracias. Ahora puedes elegir el horario que mejor te convenga para la conversación técnica.</p>
+            {config.calUrl ? <a href={config.calUrl} target="_blank" rel="noreferrer" onClick={() => trackEvent('Cal Clicked', { placement: 'diagnostic_success' })} className="btn-primary mt-7 px-6 py-3.5"><CalendarDays size={18} /> Elegir horario <ArrowRight size={16} /></a> : <a href={`mailto:${config.email}`} className="btn-secondary mt-7 px-6 py-3.5"><Mail size={18} /> Coordinar por correo</a>}
+            {!config.calUrl && <p className="mt-4 text-xs text-slate-500">Coordinaremos un horario por correo.</p>}
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} onFocus={handleFocus} className="trust-card p-6 sm:p-8" noValidate>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field label="Nombre" value={form.name} onChange={setField('name')} placeholder="Tu nombre" required />
+              <Field label="Empresa" value={form.company} onChange={setField('company')} placeholder="Organización" required />
+            </div>
+            <div className="mt-5"><Field label="Correo corporativo" type="email" value={form.email} onChange={setField('email')} placeholder="nombre@empresa.com" required /></div>
+            <div className="mt-5"><Select label="Desafío principal" value={form.challenge} onChange={setField('challenge')} required options={[['', 'Selecciona una opción'], ['observabilidad', 'Observabilidad e incidentes'], ['kubernetes', 'Kubernetes y plataforma'], ['rendimiento', 'Rendimiento y capacidad'], ['automatizacion', 'Automatización operativa'], ['otro', 'Otro desafío']]} /></div>
+            <div className="mt-5 grid gap-5 sm:grid-cols-2">
+              <Select label="Escala aproximada" value={form.scale} onChange={setField('scale')} required options={[['', 'Selecciona'], ['small', 'Hasta 50 recursos'], ['medium', '50–200 recursos'], ['large', 'Más de 200 recursos'], ['transactional', 'Entorno transaccional']]} />
+              <Select label="Plazo esperado" value={form.timeline} onChange={setField('timeline')} required options={[['', 'Selecciona'], ['urgent', 'Este mes'], ['quarter', 'Este trimestre'], ['exploring', 'Estoy explorando']]} />
+            </div>
+            {message && <div role="alert" className={`mt-5 rounded-xl border px-4 py-3 text-sm ${status === 'error' ? 'border-red-400/20 bg-red-400/5 text-red-300' : 'border-amber-400/20 bg-amber-400/5 text-amber-200'}`}>{message}</div>}
+            <button type="submit" disabled={status === 'sending'} className="btn-primary mt-7 w-full justify-center px-6 py-3.5 disabled:cursor-not-allowed disabled:opacity-60">{status === 'sending' ? <><Loader2 size={17} className="animate-spin" /> Enviando…</> : <><Send size={17} /> Continuar para agendar</>}</button>
+            <p className="mt-4 text-center text-[11px] leading-5 text-slate-600">Al enviar aceptas que usemos estos datos para responder tu solicitud. <a href="/privacidad" className="underline hover:text-slate-400">Consulta nuestro aviso de privacidad.</a></p>
+          </form>
+        )}
       </div>
-
-      {modal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0A0C]/90 backdrop-blur-md">
-          <div className="bg-[#121216] border border-white/10 max-w-md w-full rounded-2xl p-6 shadow-2xl space-y-4 relative">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-[#3ECF8E]/10 rounded-full blur-xl pointer-events-none" />
-            <div className="flex items-center space-x-3">
-              {modal.type === 'success' ? (
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-emerald-500/10 text-[#3ECF8E]">
-                  <i className="fa-solid fa-circle-check text-xl" />
-                </div>
-              ) : (
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-red-500/10 text-red-500">
-                  <i className="fa-solid fa-circle-exclamation text-xl" />
-                </div>
-              )}
-              <h3 className="text-sm font-bold font-mono-custom uppercase tracking-wider text-[#FAFAFA]">{modal.title}</h3>
-            </div>
-            <p className="text-xs text-[#8E8E9F] leading-relaxed">{modal.msg}</p>
-            <button onClick={() => setModal(null)} className="w-full bg-[#3ECF8E] hover:bg-[#00C573] text-[#0A0A0C] font-bold py-3 rounded-xl transition-all duration-200 text-xs font-mono-custom uppercase tracking-wider">
-              Entendido
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
+}
+
+function Field({ label, type = 'text', ...props }) {
+  return <label className="block"><span className="form-label">{label}</span><input type={type} className="form-control" {...props} /></label>;
+}
+
+function Select({ label, options, ...props }) {
+  return <label className="block"><span className="form-label">{label}</span><select className="form-control" {...props}>{options.map(([value, text]) => <option key={value} value={value}>{text}</option>)}</select></label>;
 }

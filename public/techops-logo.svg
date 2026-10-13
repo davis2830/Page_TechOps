@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" role="img" aria-labelledby="title desc">
+  <title id="title">TechOPS</title>
+  <desc id="desc">Símbolo de rutas convergentes y logotipo TechOPS.</desc>
+  <defs>
+    <linearGradient id="infra" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#72ffe0"/><stop offset="1" stop-color="#0bd59b"/></linearGradient>
+    <linearGradient id="tele" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3defc4"/><stop offset="1" stop-color="#069696"/></linearGradient>
+    <linearGradient id="ops" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ee1b1"/><stop offset="1" stop-color="#076e83"/></linearGradient>
+  </defs>
+  <g transform="scale(.75)">
+    <path d="M13 18h33l-6 18H22L13 18Z" fill="url(#infra)"/>
+    <path d="M50 18h33l-9 18H56l-6-18Z" fill="url(#tele)"/>
+    <path d="M46 18h4l6 18H40l6-18Z" fill="#6dffda"/>
+    <path d="M40 36h16v39l-8 13-8-13V36Z" fill="url(#ops)"/>
+    <path d="M48 36h8v39l-8 13V36Z" fill="#075b79" opacity=".42"/>
+    <path d="M56 36h18l-6 11H56V36Z" fill="#076f83" opacity=".8"/>
+    <path d="M13 18h70l-4 7H17l-4-7Z" fill="#b8ffe8" opacity=".28"/>
+  </g>
+  <text x="82" y="48" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="700" letter-spacing="-2" fill="#f8fafc">Tech</text>
+  <text x="172" y="48" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="800" letter-spacing="-2" fill="#34d399">OPS</text>
+</svg>
