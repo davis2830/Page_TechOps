@@ -2,11 +2,11 @@
 
 ## Sentinel
 
-La landing comercial está en `/sentinel`; la aplicación se mantiene separada en `https://sentinel.gctechops.com`. Configura `VITE_SENTINEL_APP_URL` para cambiar su destino. La portada enlaza al producto y ambas páginas comparten el footer y el estilo visual.
+La landing comercial está en `/sentinel`. Sentinel aún no está desplegado públicamente: la portada y la landing lo presentan como «Próximamente» y no muestran acceso a la aplicación. `VITE_SENTINEL_APP_URL` queda reservado para cuando exista un destino público verificado. Ambas páginas comparten el footer y el estilo visual.
 
-La solicitud de beta usa `VITE_WEB3FORMS_KEY`. Sin una clave, muestra contacto por correo usando `VITE_CONTACT_EMAIL`. Ambas páginas muestran el dashboard real con datos de prueba; Sentinel añade una galería manual de dashboard, uptime y certificados. Las capturas deben renovarse con una demo comercial limpia en la siguiente fase.
+El formulario de interés en el lanzamiento usa `VITE_WEB3FORMS_KEY`. Sin una clave, muestra contacto por correo usando `VITE_CONTACT_EMAIL`; no simula un registro exitoso. Ambas páginas muestran una captura del producto en un entorno de prueba; Sentinel añade una galería manual de dashboard, uptime y certificados. Las capturas deben renovarse con una demo comercial limpia en la siguiente fase.
 
-Sentinel organiza hero, capacidades (`#producto`), galería (`#pantallas`), casos (`#casos`), onboarding y beta (`#beta`, conservando `#confianza`), FAQ y footer. El footer compartido enlaza `/sentinel/terminos` en el producto y `/terminos` en la web corporativa. Privacidad y seguridad son comunes; todos los textos legales siguen como borradores.
+Sentinel organiza hero, capacidades (`#producto`), galería (`#pantallas`), casos (`#casos`), interés en el lanzamiento (`#beta`, conservando `#confianza`), FAQ y footer. El footer compartido enlaza `/sentinel/terminos` en el producto y `/terminos` en la web corporativa. Privacidad y seguridad son comunes; todos los textos legales siguen como borradores.
 
 Pendientes del lanzamiento: capturas comerciales y móviles, políticas definitivas, metadatos sociales prerenderizados, correo corporativo y despliegue. No se han cambiado el SaaS, DNS ni pagos.
 

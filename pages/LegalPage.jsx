@@ -7,10 +7,10 @@ import config from '../config/contacto';
 const content = {
   sentinel: {
     title: 'Términos de Sentinel',
-    description: 'Borrador de condiciones para el acceso anticipado y uso de Sentinel, producto de GCTechOps.',
+    description: 'Borrador de condiciones futuras de Sentinel, producto de GCTechOps aún no disponible públicamente.',
     sections: [
       ['Prestador', 'Sentinel es un producto de GCTechOps, cuyo titular operará inicialmente como persona individual. La identidad legal del prestador está pendiente de incorporación.'],
-      ['Acceso anticipado', 'Solicitar la beta no activa una cuenta ni implica un cobro. Antes de activar el acceso deben acordarse disponibilidad, duración, funcionalidades, límites y condiciones de salida de la beta.'],
+      ['Lanzamiento pendiente', 'Sentinel aún no está disponible públicamente. Registrar interés en su lanzamiento no activa una cuenta ni implica un cobro. Las condiciones de uso se definirán antes de ofrecer el servicio.'],
       ['Cuentas y autorización', 'Cada organización debe administrar sus usuarios y proteger sus credenciales. Solo deben registrarse recursos propios o que el cliente esté autorizado a monitorear. Las reglas de recuperación de cuentas y tratamiento de usos abusivos deben definirse.'],
       ['Alcance del monitoreo', 'Las señales reflejan observaciones desde el entorno de monitoreo; no garantizan detectar todos los fallos ni sustituyen la respuesta del equipo. Frecuencia, cobertura y canales dependen del alcance acordado. Este borrador no ofrece un SLA contractual.'],
       ['Planes y cobros', 'Precios, moneda, impuestos, renovación, proveedor de cobro, cancelación y reembolsos están pendientes de aprobación. Deben presentarse antes de aceptar una suscripción; no se presupone renovación automática.'],
@@ -25,10 +25,10 @@ const content = {
     description: 'Borrador común de privacidad para GCTechOps, sus servicios y Sentinel.',
     sections: [
       ['Responsable pendiente', 'GCTechOps es la marca comercial y Sentinel su producto. El titular operará inicialmente como persona individual; su identidad y domicilio de contacto están pendientes de incorporación.'],
-      ['Datos de contacto', 'Los formularios solicitan nombre, empresa, correo y contexto de la consulta o solicitud de beta. No envíes contraseñas, claves API, datos de tarjetas o información confidencial de terceros.'],
+      ['Datos de contacto', 'Los formularios solicitan nombre, empresa, correo y contexto de la consulta o interés en el lanzamiento de Sentinel. No envíes contraseñas, claves API, datos de tarjetas o información confidencial de terceros.'],
       ['Datos de Sentinel', 'Según las funciones utilizadas, la plataforma puede tratar cuentas y organizaciones, configuración de monitores, dominios, endpoints, resultados, incidentes y preferencias de notificación. Debe completarse el inventario de registros técnicos, credenciales y datos recogidos automáticamente.'],
-      ['Roles y finalidades', 'La gestión de cuentas y relación comercial debe distinguirse del monitoreo tratado por cuenta del cliente. Deben documentarse sus instrucciones y responsabilidades. Solicitar acceso no constituye consentimiento automático para publicidad.'],
-      ['Para qué los usamos', 'Utilizamos estos datos para responder tu consulta, evaluar el diagnóstico solicitado y coordinar una conversación. No vendemos información personal.'],
+      ['Roles y finalidades', 'La gestión de cuentas y relación comercial debe distinguirse del monitoreo tratado por cuenta del cliente. Deben documentarse sus instrucciones y responsabilidades. El formulario de Sentinel solicita consentimiento específico para enviar novedades de su lanzamiento.'],
+      ['Para qué los usamos', 'Utilizamos estos datos para responder tu consulta, evaluar el diagnóstico solicitado, coordinar una conversación y, si lo aceptas en el formulario de Sentinel, enviarte novedades de ese producto. No vendemos información personal.'],
       ['Proveedores', 'La web integra opcionalmente Web3Forms, Cal.com y Plausible, cuando están configurados. Deben confirmarse hosting, correo, pagos y proveedores de Sentinel, ubicación del tratamiento y posibles transferencias internacionales.'],
       ['Conservación', 'Los plazos de conservación de consultas, cuentas, resultados y registros están pendientes. Deben definirse exportación, eliminación y expiración de backups. No se promete eliminación inmediata sin verificar su implementación.'],
       ['Cookies y analítica', 'Plausible se activa según configuración. Deben verificarse cookies, almacenamiento local y servicios externos de la web y aplicación para describir su uso real y las opciones correspondientes.'],
